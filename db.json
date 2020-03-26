@@ -1,0 +1,17 @@
+{
+  "repository": [
+    {
+      "id": 1,
+      "facebook/Freact": "Chegou aquiii"
+
+    },
+    {
+      "id": 2,
+      "vue/vue": "VUE"
+
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
