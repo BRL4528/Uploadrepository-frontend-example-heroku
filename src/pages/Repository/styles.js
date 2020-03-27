@@ -95,3 +95,13 @@ export const IssueList = styled.ul`
   }
 `;
 export const Bot = styled.select``;
+
+export const Button = styled.button.attrs({
+  type: 'submit',
+})`
+  background: #473c8b;
+  border: 0;
+  padding: 0 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+`;

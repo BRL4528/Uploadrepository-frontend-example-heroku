@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, Bot } from './styles';
+import { Loading, Owner, IssueList, Bot, Button } from './styles';
 
 export default class Repository extends Component {
   // eslint-disable-next-line react/sort-comp
@@ -94,7 +94,7 @@ export default class Repository extends Component {
           <option value="open">Abertos</option>
           <option value="closed">Fechados</option>
         </Bot>
-        <h1>Pagina {pagina}</h1>
+        <h3>Pagina {pagina}</h3>
 
         <IssueList>
           {issues.map(issue => (
@@ -112,9 +112,9 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
-        <button value={pagina} onClick={this.handleSelectPage}>
+        <Button value={pagina} onClick={this.handleSelectPage}>
           Proximo
-        </button>
+        </Button>
       </Container>
     );
   }
