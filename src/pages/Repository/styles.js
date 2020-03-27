@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const NumberPage = styled.h3`
+  color: #27408b;
+  float: right;
+`;
 export const Loading = styled.div`
   color: #fff;
   font-size: 30px;
@@ -101,7 +105,11 @@ export const Button = styled.button.attrs({
 })`
   background: #473c8b;
   border: 0;
-  padding: 0 15px;
-  margin-left: 10px;
+  color: #fff;
+  padding: 15px;
+  margin: 10px;
   border-radius: 4px;
+`;
+export const PageControl = styled.div`
+  text-align: center;
 `;

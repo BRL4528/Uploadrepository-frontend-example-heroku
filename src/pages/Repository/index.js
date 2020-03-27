@@ -8,7 +8,15 @@ import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, Bot, Button } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  Bot,
+  Button,
+  PageControl,
+  NumberPage,
+} from './styles';
 
 export default class Repository extends Component {
   // eslint-disable-next-line react/sort-comp
@@ -25,7 +33,7 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
-    pagina: 0,
+    pagina: 1,
   };
 
   async componentDidMount(tag) {
@@ -60,10 +68,19 @@ export default class Repository extends Component {
     this.componentDidMount(e.target.value);
   };
 
-  handleSelectPage = e => {
+  handleSelectPageNext = e => {
     // eslint-disable-next-line radix
     let numero = parseInt(e.target.value);
     numero += 1;
+    this.atualiza(numero);
+
+    this.componentDidMount();
+  };
+
+  handleSelectPageBack = e => {
+    // eslint-disable-next-line radix
+    let numero = parseInt(e.target.value);
+    numero -= 1;
     this.atualiza(numero);
 
     this.componentDidMount();
@@ -82,19 +99,21 @@ export default class Repository extends Component {
 
     return (
       <Container>
+        <div>
+          <NumberPage>Pagina: {pagina}</NumberPage>
+          <Bot id="selc" onChange={this.handleSelectChange}>
+            <option value="all">Todos</option>
+            <option value="open">Abertos</option>
+            <option value="closed">Fechados</option>
+          </Bot>
+        </div>
+
         <Owner>
           <Link to="/">Voltar aos Repositórios</Link>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-
-        <Bot id="selc" onChange={this.handleSelectChange}>
-          <option value="all">Todos</option>
-          <option value="open">Abertos</option>
-          <option value="closed">Fechados</option>
-        </Bot>
-        <h3>Pagina {pagina}</h3>
 
         <IssueList>
           {issues.map(issue => (
@@ -112,9 +131,15 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
-        <Button value={pagina} onClick={this.handleSelectPage}>
-          Proximo
-        </Button>
+        <PageControl>
+          <Button value={pagina} onClick={this.handleSelectPageBack}>
+            Anterior
+          </Button>
+          <Button value={pagina} onClick={this.handleSelectPageNext}>
+            Proximo
+          </Button>
+        </PageControl>
+        <NumberPage>Pagina: {pagina}</NumberPage>
       </Container>
     );
   }
