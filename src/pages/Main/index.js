@@ -44,8 +44,8 @@ export default class Main extends Component {
 
     const { newRepo, repositories } = this.state;
 
-    const response = await api.get(`/repos/${newRepo}`);
-
+   // const response = await api.get(`/repos/${newRepo}`);
+    const response = await api.get(`/${newRepo}.pdf?apikey=guJIOvLeJD1gVlO0HBYs5Mb0goTFgH3c8sN5DYGHWV5GFe9aBz1mqKiicLOwNdBKXxB`);
     const data = {
       name: response.data.full_name,
     };
