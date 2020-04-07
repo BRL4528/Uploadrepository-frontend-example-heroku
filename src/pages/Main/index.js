@@ -62,6 +62,9 @@ export default class Main extends Component {
 
     return (
       <Container>
+              <Link to={`https://nfe.api.nfe.io/v2/productinvoices/50200102226278000964550010000028401273669955.pdf?apikey=guJIOvLeJD1gVlO0HBYs5Mb0goTFgH3c8sN5DYGHWV5GFe9aBz1mqKiicLOwNdBKXxB`}>
+                Detalhes
+              </Link>
         <h1>
           <FaGithubAlt />
           Repositórios
